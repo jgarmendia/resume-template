@@ -23,6 +23,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
     <link rel=icon href=images/favicon-16x16.png sizes="16x16" type="image/png">
+    <link rel="manifest" href="manifest.json" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="Resume Template" />
+    <link rel="apple-touch-icon" href="images/icons/img_icon_192.png" />
+    <meta
+      name="msapplication-TileImage"
+      content="images/icons/img_icon_144.png"
+    />
+    <meta name="msapplication-TileColor" content="#f5ecda" />
+    <meta name="theme-color" content="#f5ecda" />
     <title>
       Title
     </title>
@@ -296,6 +308,48 @@
           >, 2019.</span
         >
       </footer>
+
+      <div class="offline-ready" hidden>
+        <div class="off-m">
+          <span class="off-c">Ready to go offline.</span>
+        </div>
+      </div>
     </div>
+
+    <!-- Service Worker-->
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+          .register("./service-worker.js")
+          .then(function(reg) {
+            console.log("Service Worker Registered");
+            reg.onupdatefound = function() {
+              const installingWorker = reg.installing;
+              installingWorker.onstatechange = function() {
+                switch (installingWorker.state) {
+                  case "installed":
+                    if (navigator.serviceWorker.controller) {
+                      console.log("New or updated content is available.");
+                    } else {
+                      console.log("Content is now available offline!");
+                      document
+                        .querySelector(".offline-ready")
+                        .removeAttribute("hidden");
+                    }
+                    break;
+                  case "redundant":
+                    console.error(
+                      "The installing service worker became redundant."
+                    );
+                    break;
+                }
+              };
+            };
+          })
+          .catch(function(err) {
+            console.log(err);
+          });
+      }
+    </script>
   </body>
 </html>
