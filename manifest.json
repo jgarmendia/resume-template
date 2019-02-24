@@ -19,8 +19,8 @@
         "type": "image/png"
       }
     ],
-    "start_url": "/",
-    "scope": "/",
+    "start_url": "/resume-template/",
+    "scope": "/resume-template/",
     "display": "minimal-ui",
     "background_color": "#f5ecda",
     "theme_color": "#f5ecda"

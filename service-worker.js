@@ -6,14 +6,14 @@
 
 // nombre del cache actual
 // IMPORTANTE !!!  (se debe cambiar el nombre por cada cambio)
-var cacheName = 'resume-temp-01';
+var cacheName = 'resume-temp-02';
 
 // lista de archivos necesarios para la shell app (index, js, imagenes,css, etc)
-// para github pages, se mepieza con el nombre del repositorio
+// para github pages, se mepieza con el nombre del repositorio.
 var filesToCache = [
-    '/',
-    '/index.html',
-    '/style.css'
+    '/resume-template/',
+    '/resume-template/index.html',
+    '/resume-template/style.css'
 ];
 
 // Instalación
